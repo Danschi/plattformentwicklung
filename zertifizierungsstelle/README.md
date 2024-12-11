@@ -6,6 +6,12 @@
 ca@sollca:~# sudo apt update
 ca@sollca:~# sudo apt upgrade
 ```
+**Ordner anlegen**
+```console
+ca@sollca:~# mkdir sollit-ca
+ca@sollca:~/sollit-ca# cd sollit-ca
+ca@sollca:~/sollit-ca# mkdir db private certs
+```
 **Privater Schlüssel erzeugen**
 ```console
 ca@sollca:~# openssl genpkey \
@@ -13,12 +19,6 @@ ca@sollca:~# openssl genpkey \
 > -algorithm RSA \
 > -pkeyopt rsa_keygen_bits:2048 \
 > -aes-256-cbc
-```
-**Ordner anlegen**
-```console
-ca@sollca:~# mkdir sollit-ca
-ca@sollca:~/sollit-ca# cd sollit-ca
-ca@sollca:~/sollit-ca# mkdir db private certs
 ```
 **root-ca.conf mit folgendem Inhalt anlegen**
 ```
