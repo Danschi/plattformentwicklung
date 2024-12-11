@@ -17,8 +17,8 @@ ca@sollca:~# openssl genpkey \
 **Ordner anlegen**
 ```console
 ca@sollca:~# mkdir sollit-ca
-ca@sollca:~# cd sollit-ca
-ca@sollca:~# mkdir db private certs
+ca@sollca:~/sollit-ca# cd sollit-ca
+ca@sollca:~/sollit-ca# mkdir db private certs
 ```
 **root-ca.conf mit folgendem Inhalt anlegen**
 ```
