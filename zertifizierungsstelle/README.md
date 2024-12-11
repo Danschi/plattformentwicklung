@@ -7,7 +7,7 @@ ca@sollca:~# sudo apt update
 ca@sollca:~# sudo apt upgrade
 ```
 1. **Privater Schlüssel erzeugen**
-```bash
+```console
 ca@sollca:~# openssl genpkey \
 > -out foo.key \
 > -algorithm RSA \
@@ -15,7 +15,7 @@ ca@sollca:~# openssl genpkey \
 > -aes-256-cbc
 ```
 1. **Ordner anlegen**
-```bash
+```console
 ca@sollca:~# mkdir sollit-ca
 ca@sollca:~# cd sollit-ca
 ca@sollca:~# mkdir db private certs
