@@ -94,13 +94,13 @@ nameConstraints = @name_constraints
 subjectKeyIdentifier = hash
 
 [server_ext]
-authorityInfoAccess	    = @issuer_info
-authorityKeyIdentifier	= keyid:always
-basicConstraints	      = critical,CA:false
-crlDistributionPoints	  = @crl_info
-extendedKeyUsage	      = clientAuth,serverAuth
-keyUsage		            = critical,digitalSignature,keyEncipherment
-subjectKeyIdentifier	  = hash
+authorityInfoAccess = @issuer_info
+authorityKeyIdentifier = keyid:always
+basicConstraints = critical,CA:false
+crlDistributionPoints = @crl_info
+extendedKeyUsage = clientAuth,serverAuth
+keyUsage = critical,digitalSignature,keyEncipherment
+subjectKeyIdentifier = hash
 
 [client_ext]
 authorityInfoAccess = @issuer_info
