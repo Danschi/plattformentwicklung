@@ -1,0 +1,41 @@
+volumes:
+  2   mongodb_data:
+  3     driver: local
+  4 
+  5 services:
+  6   rocketchat:
+  7     image: registry.rocket.chat/rocketchat/rocket.chat:latest
+  8     labels:
+  9       traefik.enable: "true"
+ 10       traefik.http.routers.rocketchat.rule: Host(`chat.danschi.lan`)
+ 11       traefik.http.routers.rocketchat.tls: "true"
+ 12       traefik.http.routers.rocketchat.entrypoints: https
+ 13       traefik.http.routers.rocketchat.tls.certresolver: le
+ 14     environment:
+ 15       MONGO_URL: "mongodb://mongodb:27017/rocketchat?replicaSet=rs0"
+ 16       MONGO_OPLOG_URL: "mongodb://mongodb:27017/local?replicaSet=rs0"
+ 17       ROOT_URL: http://chat.danschi.lan:3000
+ 18       PORT: 3000
+ 19       DEPLOY_METHOD: docker
+ 20       DEPLOY_PLATFORM: linux
+ 21       REG_TOKEN:
+ 22     depends_on:
+ 23       - mongodb
+ 24     expose:
+ 25       - 3000
+ 26     ports:
+ 27       - "192.168.122.188:3000:3000"
+ 28 
+ 29   mongodb:
+ 30     image: docker.io/bitnami/mongodb:latest
+ 31     environment:
+ 32       MONGODB_REPLICA_SET_MODE: primary
+ 33       MONGODB_REPLICA_SET_NAME: rs0
+ 34       MONGODB_PORT_NUMBER: 27017
+ 35       MONGODB_INITIAL_PRIMARY_HOST: mongodb
+ 36       MONGODB_INITIAL_PRIMARY_PORT_NUMBER: 27017
+ 37       MONGODB_ADVERTISED_HOSTNAME: mongodb
+ 38       MONGODB_ENABLE_JOURNAL: true
+ 39       ALLOW_EMPTY_PASSWORD: yes
+ 40     volumes:
+ 41       - mongodb_data:/bitnami/mongodb
